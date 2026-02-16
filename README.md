@@ -126,10 +126,6 @@ Public GitHub repository with full commit history
 
 Deployed frontend & backend
 
-Demo video link
-
-Clear setup instructions
-Author
 
 Rishika
 BCA Student | Full-Stack & AI Enthusiast
