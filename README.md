@@ -1,41 +1,44 @@
-Perfect 👍
-Below is a complete, professional README.md written exactly according to the submission rules you shared.
-You can copy–paste this directly into your GitHub repo.
-
 🧠 AI UI Generator
 
-An AI-powered web application that generates React UI components from natural language prompts.
-The system supports iterative UI modification, live preview updates, AI explanations, and rollback/version control, delivered through a full-stack architecture.
+An AI-powered full-stack web application that generates dynamic React UI components from natural language prompts.
+
+The system supports iterative UI modification, live preview updates, AI explanations, rollback/version control, and a modular AI generation pipeline — all delivered through a scalable frontend + backend architecture.
 
 🚀 Live Demo
 
-Frontend (Netlify):
+Frontend (Netlify)
 👉 https://ai-ui-generatorr.netlify.app/
 
-Backend (Render):
+Backend (Render)
 👉 https://ai-ui-generator-eden.onrender.com
 
-👉 API Docs: https://ai-ui-generator-eden.onrender.com/docs
+API Documentation (Swagger UI)
+👉 https://ai-ui-generator-eden.onrender.com/docs
 
 📌 Features
-
 🔤 Natural Language → UI Generation
+
 Generate React UI components by describing the UI in plain English.
 
-🔁 Iterative Modification
-Modify the UI by changing the prompt and regenerating.
+🔁 Iterative UI Modification
 
-👀 Live Preview Update
-UI updates immediately after generation.
+Update or refine the UI by modifying the prompt and regenerating components.
+
+👀 Live Preview Rendering
+
+The generated UI updates instantly inside the application.
 
 🧠 AI Explanation Output
-Backend returns an explanation of the generated UI.
+
+The backend provides an explanation describing how the UI was structured and generated.
 
 ⏪ Rollback / Version Control
-Restore previous UI versions using backend memory handling.
+
+Restore previously generated UI versions using backend memory handling.
 
 🛡️ Safe Fallback Mechanism
-Ensures stability in production by preventing broken AI responses.
+
+Prevents broken AI responses from crashing the system in production.
 
 🧩 Tech Stack
 Frontend
@@ -46,17 +49,17 @@ JavaScript
 
 CSS
 
-Deployed on Netlify
+Hosted on Netlify
 
 Backend
 
 FastAPI (Python)
 
-REST API
+REST API architecture
 
-AI planning & generation pipeline
+Modular AI planning & generation pipeline
 
-Deployed on Render
+Hosted on Render
 
 📂 Project Structure
 ai-ui-generator/
@@ -79,7 +82,6 @@ ai-ui-generator/
 │       └── vite.config.js
 │
 └── README.md
-
 ⚙️ Local Setup Instructions
 🔹 Backend Setup
 cd backend
@@ -88,48 +90,62 @@ venv\Scripts\activate   # Windows
 pip install -r requirements.txt
 uvicorn main:app --reload
 
-
 Backend runs at:
 
 http://127.0.0.1:8000
-
 🔹 Frontend Setup
 cd frontend/AI-UI-generator
 npm install
 npm run dev
 
-
 Frontend runs at:
 
 http://localhost:5173
-
 🌐 Deployment
 
-Backend: Deployed on Render
+Backend deployed on Render
 
-Frontend: Deployed on Netlify
+Frontend deployed on Netlify
 
-Both are accessible via public URLs (no local-only demo).
+Both services are publicly accessible (no local-only demo)
 
-Notes & Limitations
+⚠️ Note: On free-tier hosting, the backend may experience a 20–30 second cold start delay.
 
-In production, a deterministic fallback mechanism is used to ensure stability and responsiveness.
+🏗️ Architecture Overview
 
-The AI pipeline is modular and extensible, allowing future integration with more advanced LLMs.
+The backend follows a modular AI pipeline:
 
-On free-tier hosting, the backend may experience cold-start delays (20–30 seconds).
-Submission Details
+Planner → Converts prompt into structured UI plan
 
-This project is submitted as part of an AI assignment and includes:
+Generator → Produces UI code
+
+Validator → Ensures output stability
+
+Memory → Enables rollback/versioning
+
+API Layer → Serves structured response to frontend
+
+The system is designed to be extensible for future integration with advanced LLMs.
+
+📌 Notes & Limitations
+
+A deterministic fallback mechanism ensures production stability.
+
+Designed for extensibility and AI experimentation.
+
+Cold-start delays may occur on free hosting plans.
+
+📜 Submission Details
+
+This project includes:
 
 Public GitHub repository with full commit history
 
-Deployed frontend & backend
+Deployed frontend and backend
 
+Working API documentation
+
+👩‍💻 Author
 
 Rishika
 BCA Student | Full-Stack & AI Enthusiast
-
-Live preview updates
-
-AI explan

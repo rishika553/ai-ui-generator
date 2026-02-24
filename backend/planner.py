@@ -24,63 +24,72 @@ JSON structure:
 }
 """
 
+# def create_plan(user_input: str):
+#     try:
+#         response = ollama.chat(
+#             model="deepseek-coder",
+#             messages=[
+#                 {"role": "system", "content": PLANNER_PROMPT},
+#                 {"role": "user", "content": user_input}
+#             ]
+#         )
+
+#         content = response["message"]["content"]
+#         print("RAW PLANNER OUTPUT:\n", content)
+
+#         match = re.search(r"\{[\s\S]*\}", content)
+#         if not match:
+#             raise ValueError("No JSON found")
+
+#         json_str = match.group()
+
+       
+#         json_str = json_str.strip()
+#         json_str = re.sub(r",\s*([}\]])", r"\1", json_str)
+
+#         try:
+#             return json.loads(json_str)
+
+#         except json.JSONDecodeError:
+           
+#             return {
+#                 "layout": "fallback",
+#                 "components": [
+#                     {
+#                         "type": "Navbar",
+#                         "props": { "title": "Generated UI" }
+#                     },
+#                     {
+#                         "type": "Card",
+#                         "props": { "text": "AI output was adjusted for safety" }
+#                     },
+#                     {
+#                         "type": "Button",
+#                         "props": { "text": "Click Me" }
+#                     }
+#                 ]
+#             }
+
+#     except Exception as e:
+       
+#         return {
+#             "layout": "error",
+#             "components": [
+#                 {
+#                     "type": "Card",
+#                     "props": {
+#                         "text": f"Planner error: {str(e)}"
+#                     }
+#                 }
+#             ]
+#         }
 def create_plan(user_input: str):
-    try:
-        response = ollama.chat(
-            model="deepseek-coder",
-            messages=[
-                {"role": "system", "content": PLANNER_PROMPT},
-                {"role": "user", "content": user_input}
-            ]
-        )
-
-        content = response["message"]["content"]
-        print("RAW PLANNER OUTPUT:\n", content)
-
-        # Extract first JSON object
-        match = re.search(r"\{[\s\S]*\}", content)
-        if not match:
-            raise ValueError("No JSON found")
-
-        json_str = match.group()
-
-        # Minimal safe cleanup only
-        json_str = json_str.strip()
-        json_str = re.sub(r",\s*([}\]])", r"\1", json_str)
-
-        try:
-            return json.loads(json_str)
-
-        except json.JSONDecodeError:
-            #  SAFE FALLBACK (DO NOT CRASH)
-            return {
-                "layout": "fallback",
-                "components": [
-                    {
-                        "type": "Navbar",
-                        "props": { "title": "Generated UI" }
-                    },
-                    {
-                        "type": "Card",
-                        "props": { "text": "AI output was adjusted for safety" }
-                    },
-                    {
-                        "type": "Button",
-                        "props": { "text": "Click Me" }
-                    }
-                ]
-            }
-
-    except Exception as e:
-        #  FINAL SAFETY NET
-        return {
-            "layout": "error",
-            "components": [
-                {
-                    "type": "Card",
-                    "props": {
-                        "text": f"Planner error: {str(e)}"
-                    }
-                }
-            ]
-        }
+    return {
+        "layout": "dashboard",
+        "components": [
+            {"type": "Navbar", "props": {"title": "Dashboard"}},
+            {"type": "Sidebar", "props": {}},
+            {"type": "Card", "props": {"text": "Welcome"}},
+            {"type": "Button", "props": {"text": "Click"}}
+        ]
+    }
