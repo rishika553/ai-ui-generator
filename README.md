@@ -1,151 +1,141 @@
-🧠 AI UI Generator
+# ⚡ AI Landing Page Generator
 
-An AI-powered full-stack web application that generates dynamic React UI components from natural language prompts.
+An AI-powered full-stack web application that converts natural language prompts into complete, responsive, high-converting landing pages.
 
-The system supports iterative UI modification, live preview updates, AI explanations, rollback/version control, and a modular AI generation pipeline — all delivered through a scalable frontend + backend architecture.
+Instead of generating raw unverified code, the backend converts user prompts into structured **JSON Schemas** describing every section, theme token, color palette, typography stack, and copy. The frontend dynamically renders reusable **React components** powered by **Tailwind CSS** and **Framer Motion** animations.
 
-🚀 Live Demo
+---
 
-Frontend (Netlify)
-👉 https://ai-ui-generatorr.netlify.app/
+## ✨ Features
 
-Backend (Render)
-👉 https://ai-ui-generator-eden.onrender.com
+- **🔤 Natural Language → Structured JSON Schema**: Converts simple prompts (e.g., *"Create a modern landing page for an AI SaaS startup"*) into complete JSON describing all page sections:
+  - `Navbar` · `Hero` · `Features` · `Statistics` · `About` · `Pricing` · `Testimonials` · `FAQ` · `Contact` · `Footer`
+- **🎨 Dynamic Theme & Typography System**:
+  - **6 Themes**: Modern, Minimal, Dark, Glassmorphism, Startup, Luxury.
+  - **5 Font Stacks**: Inter, Poppins, Outfit, DM Sans, Playfair Display.
+  - **Automated Color Palettes**: Primary, Secondary, Accent, Surface, Background, Text, and Muted tokens.
+- **💬 Follow-Up AI Chat Editing**: Iterative prompts (e.g. *"Make it dark"*, *"Change the hero title to..."*, *"Add pricing"*, *"Remove FAQ"*, *"Use rounded buttons"*) target specific JSON sections without re-generating unchanged parts.
+- **🖥️ Live Desktop Preview**: Renders full-width desktop view with event-intercepted smooth scrolling.
+- **⏪ Version History & Restoration**: Keeps snapshots of all generations and edits, allowing instant restoration of any previous state.
+- **📊 AI Design Explanations**: Provides deep breakdowns for:
+  - Layout Flow & Structure Strategy
+  - Color Palette & Typography Choice
+  - Accessibility Compliance (Contrast, Tap Targets, ARIA)
+  - SEO Optimization (Meta Titles, Heading Hierarchy)
+- **⚡ Professional Skeleton Loader**: Shimmering skeleton UI with animated progress bar during AI processing.
+- **🛡️ Schema Validator Guard**: Built-in validation pipeline ensures invalid AI responses are safely replaced with fallback landing page layouts.
 
-API Documentation (Swagger UI)
-👉 https://ai-ui-generator-eden.onrender.com/docs
+---
 
-📌 Features
-🔤 Natural Language → UI Generation
+## 🛠️ Tech Stack
 
-Generate React UI components by describing the UI in plain English.
+### Frontend
+- **Framework**: React 19 + Vite
+- **Styling**: Tailwind CSS v4
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Language**: JavaScript (ESNext)
 
-🔁 Iterative UI Modification
+### Backend
+- **Framework**: FastAPI (Python 3.13)
+- **Server**: Uvicorn
+- **Data Validation**: Pydantic
+- **Architecture**: Modular AI Pipeline (`Planner → Generator → Theme → Validator → Memory → Explainer → API`)
 
-Update or refine the UI by modifying the prompt and regenerating components.
+---
 
-👀 Live Preview Rendering
+## 📂 Project Structure
 
-The generated UI updates instantly inside the application.
-
-🧠 AI Explanation Output
-
-The backend provides an explanation describing how the UI was structured and generated.
-
-⏪ Rollback / Version Control
-
-Restore previously generated UI versions using backend memory handling.
-
-🛡️ Safe Fallback Mechanism
-
-Prevents broken AI responses from crashing the system in production.
-
-🧩 Tech Stack
-Frontend
-
-React (Vite)
-
-JavaScript
-
-CSS
-
-Hosted on Netlify
-
-Backend
-
-FastAPI (Python)
-
-REST API architecture
-
-Modular AI planning & generation pipeline
-
-Hosted on Render
-
-📂 Project Structure
+```text
 ai-ui-generator/
 ├── backend/
-│   ├── main.py
-│   ├── planner.py
-│   ├── generator.py
-│   ├── validator.py
-│   ├── memory.py
-│   └── requirements.txt
+│   ├── main.py              # FastAPI endpoints & CORS middleware
+│   ├── planner.py           # Industry profile matching & intent parsing
+│   ├── generator.py         # Landing page JSON structure builder & edit engine
+│   ├── theme_generator.py   # Theme tokens, font stacks, and color palettes
+│   ├── validator.py         # Schema verification & fallback guard
+│   ├── memory.py            # Version control memory history
+│   ├── explainer.py         # AI design, color, accessibility & SEO insights
+│   ├── test_pipeline.py     # Automated backend pipeline test script
+│   └── requirements.txt     # Python dependencies
 │
 ├── frontend/
 │   └── AI-UI-generator/
 │       ├── src/
+│       │   ├── components/
+│       │   │   ├── LandingSections.jsx # Reusable section components
+│       │   │   ├── Renderer.jsx        # Component renderer
+│       │   │   ├── ThemeProvider.jsx   # Dynamic CSS variable & font injector
+│       │   │   ├── Preview.jsx         # Live desktop preview container
+│       │   │   └── LoadingSkeleton.jsx # Shimmering skeleton loader
 │       │   ├── pages/
+│       │   │   └── Generator.jsx       # Main AI Website Builder workspace
 │       │   ├── services/
-│       │   └── App.jsx
-│       ├── public/
+│       │   │   └── api.js              # REST API client
+│       │   ├── App.jsx
+│       │   ├── main.jsx
+│       │   └── index.css
+│       ├── index.html
 │       ├── package.json
 │       └── vite.config.js
 │
 └── README.md
-⚙️ Local Setup Instructions
-🔹 Backend Setup
+```
+
+---
+
+## ⚙️ Local Setup & Execution
+
+### 1️⃣ Backend Setup (FastAPI)
+
+```powershell
+# Navigate to backend directory
 cd backend
-python -m venv venv
-venv\Scripts\activate   # Windows
+
+# Activate virtual environment (if using .venv)
+..\.venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
-uvicorn main:app --reload
 
-Backend runs at:
+# Run FastAPI backend server
+python -m uvicorn main:app --reload --port 8000
+```
+Backend API server will run at: **`http://127.0.0.1:8000`**  
+Swagger API Docs available at: **`http://127.0.0.1:8000/docs`**
 
-http://127.0.0.1:8000
-🔹 Frontend Setup
+---
+
+### 2️⃣ Frontend Setup (React + Vite)
+
+```powershell
+# Navigate to frontend directory
 cd frontend/AI-UI-generator
+
+# Install dependencies
 npm install
+
+# Start Vite development server
 npm run dev
+```
+Frontend Web Builder will run at: **`http://localhost:5173`**
 
-Frontend runs at:
+---
 
-http://localhost:5173
-🌐 Deployment
+## 📡 REST API Reference
 
-Backend deployed on Render
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/health` | Health check & service status |
+| `POST` | `/generate_ui` | Generate a new landing page JSON from prompt |
+| `POST` | `/edit_ui` | Apply targeted AI chat edits to an existing website JSON |
+| `GET` | `/history` | Fetch list of all saved version snapshots |
+| `POST` | `/restore/{version_id}` | Restore a specific version snapshot |
+| `POST` | `/rollback` | Rollback to the previous version |
 
-Frontend deployed on Netlify
+---
 
-Both services are publicly accessible (no local-only demo)
+## 👩‍💻 Author
 
-⚠️ Note: On free-tier hosting, the backend may experience a 20–30 second cold start delay.
-
-🏗️ Architecture Overview
-
-The backend follows a modular AI pipeline:
-
-Planner → Converts prompt into structured UI plan
-
-Generator → Produces UI code
-
-Validator → Ensures output stability
-
-Memory → Enables rollback/versioning
-
-API Layer → Serves structured response to frontend
-
-The system is designed to be extensible for future integration with advanced LLMs.
-
-📌 Notes & Limitations
-
-A deterministic fallback mechanism ensures production stability.
-
-Designed for extensibility and AI experimentation.
-
-Cold-start delays may occur on free hosting plans.
-
-📜 Submission Details
-
-This project includes:
-
-Public GitHub repository with full commit history
-
-Deployed frontend and backend
-
-Working API documentation
-
-👩‍💻 Author
-
-Rishika
-BCA Student | Full-Stack & AI Enthusiast
+**Rishika**  
+Full-Stack & AI Engineer
