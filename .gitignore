@@ -5,11 +5,10 @@ __pycache__/
 *.pyd
 .env
 .venv/
+venv/
 
 # Node
 node_modules/
-
-# Vite
 dist/
 
 # OS
